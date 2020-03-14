@@ -79,10 +79,6 @@ public class BinarySearchTree<T extends Comparable> {
         preOrder(root);
     }
 
-    private void preOrderNoRecursion(Node node) {
-
-    }
-
     /**
      * 前序遍历（非递归）
      */
