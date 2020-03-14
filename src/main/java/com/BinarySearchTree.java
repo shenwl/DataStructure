@@ -124,9 +124,9 @@ public class BinarySearchTree<T extends Comparable> {
 
     // 删除最大元素
     public T removeMax() {
-        T min = minimun();
+        T max = maximun();
         root = removeMax(root);
-        return min;
+        return max;
     }
 
     private void preOrder(Node node) {

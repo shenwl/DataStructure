@@ -26,11 +26,9 @@ public class BinarySearchTreeTest {
         System.out.println("---------");
         bst.LevelOrder();
         System.out.println("---------");
-        bst.removeMin();
-        bst.preOrder();
+        System.out.println(bst.removeMin());
         System.out.println("---------");
-        bst.removeMax();
-        bst.preOrder();
+        System.out.println(bst.removeMax());
         System.out.println("---------");
     }
 }
