@@ -1,5 +1,7 @@
 package com;
 
+import java.util.Stack;
+
 public class BinarySearchTree<T extends Comparable> {
     public class Node {
         T value;
@@ -75,6 +77,31 @@ public class BinarySearchTree<T extends Comparable> {
      */
     public void preOrder() {
         preOrder(root);
+    }
+
+    private void preOrderNoRecursion(Node node) {
+
+    }
+
+    /**
+     * 前序遍历（非递归）
+     */
+    public void preOrderNoRecursion() {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            Node current = stack.pop();
+            System.out.println(current.value);
+
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
     }
 
     private void inOrder(Node node) {
