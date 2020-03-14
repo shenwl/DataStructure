@@ -104,6 +104,7 @@ public class BinarySearchTree<T extends Comparable> {
 
     /**
      * 后序遍历
+     * 后序遍历的应用：为二分搜索树释放内存
      */
     public void postOrder() {
         postOrder(root);
