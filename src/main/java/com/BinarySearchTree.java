@@ -139,6 +139,7 @@ public class BinarySearchTree<T extends Comparable> {
 
     /**
      * 层序遍历（广度优先遍历）
+     * 能够更快找到想要的元素，一般用于搜寻，而不是遍历
      */
     public void LevelOrder() {
         Queue<Node> queue = new LinkedList<>();
