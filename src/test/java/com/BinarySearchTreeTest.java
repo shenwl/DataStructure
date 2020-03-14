@@ -23,5 +23,7 @@ public class BinarySearchTreeTest {
         bst.inOrder();
         System.out.println("---------");
         bst.postOrder();
+        System.out.println("---------");
+        bst.LevelOrder();
     }
 }

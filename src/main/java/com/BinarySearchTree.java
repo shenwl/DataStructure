@@ -1,5 +1,9 @@
 package com;
 
+import com.sun.jmx.remote.internal.ArrayQueue;
+
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinarySearchTree<T extends Comparable> {
@@ -131,5 +135,26 @@ public class BinarySearchTree<T extends Comparable> {
      */
     public void postOrder() {
         postOrder(root);
+    }
+
+    /**
+     * 层序遍历（广度优先遍历）
+     */
+    public void LevelOrder() {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.remove();
+            System.out.println(current.value);
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
     }
 }
