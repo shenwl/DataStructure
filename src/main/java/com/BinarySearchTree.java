@@ -1,7 +1,5 @@
 package com;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -65,6 +63,70 @@ public class BinarySearchTree<T extends Comparable> {
             return contains(node.left, e);
         }
         return contains(node.right, e);
+    }
+
+    // 找到最小值
+    public T minimun() {
+        if(size == 0) {
+            throw new IllegalArgumentException("Tree is empty!");
+        }
+        Node min = root;
+        while(min.left != null) {
+            min = min.left;
+        }
+        return min.value;
+    }
+
+    // 找到最大值
+    public T maximun() {
+        if(size == 0) {
+            throw new IllegalArgumentException("Tree is empty!");
+        }
+        Node max = root;
+        while(max.right != null) {
+            max = max.right;
+        }
+        return max.value;
+    }
+
+    // 删除掉以node为根的二分搜索树的最小节点
+    // 返回删除后新的二分搜索树的根
+    private Node removeMin(Node node) {
+        if(node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size --;
+            return rightNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    // 删除最小元素
+    public T removeMin() {
+        T min = minimun();
+        root = removeMin(root);
+        return min;
+    }
+
+    // 删除掉以node为根的二分搜索树的最大节点
+    // 返回删除后新的二分搜索树的根
+    private Node removeMax(Node node) {
+        if(node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size --;
+            return leftNode;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    // 删除最大元素
+    public T removeMax() {
+        T min = minimun();
+        root = removeMax(root);
+        return min;
     }
 
     private void preOrder(Node node) {
