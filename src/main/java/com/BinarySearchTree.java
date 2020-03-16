@@ -129,6 +129,44 @@ public class BinarySearchTree<T extends Comparable> {
         return max;
     }
 
+    private Node remove(Node node, T value) {
+        if(node == null) {
+            return null;
+        }
+        int compareResult = value.compareTo((node.value));
+        if(compareResult < 0) {
+            node.left = remove(node.left, value);
+            return node;
+        }
+        if(compareResult > 0) {
+            node.right = remove(node.right, value);
+            return node;
+        }
+        // 待删除节点左子树为null
+        if(node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size --;
+            return rightNode;
+        }
+        // 待删除节点右子树为null
+        if(node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size --;
+            return leftNode;
+        }
+        // 如果左右子树均不为空：
+        // 用该节点右子树的最小节点作为当前节点（当前节点就删除了）
+        // 删除该节点右子树的最小节点
+        node.value = removeMin(node.right).value;
+        return node;
+    }
+
+    public void remove(T value) {
+        remove(root, value);
+    }
+
     private void preOrder(Node node) {
         if (node == null) {
             return;

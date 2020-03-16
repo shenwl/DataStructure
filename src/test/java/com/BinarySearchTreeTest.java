@@ -17,18 +17,21 @@ public class BinarySearchTreeTest {
         bst.add(8);
 
         bst.preOrder();
+//        System.out.println("---------");
+//        bst.preOrderNoRecursion();
+//        System.out.println("---------");
+//        bst.inOrder();
+//        System.out.println("---------");
+//        bst.postOrder();
+//        System.out.println("---------");
+//        bst.LevelOrder();
+//        System.out.println("---------");
+//        System.out.println(bst.removeMin());
+//        System.out.println("---------");
+//        System.out.println(bst.removeMax());
         System.out.println("---------");
-        bst.preOrderNoRecursion();
+        bst.remove(4);
         System.out.println("---------");
-        bst.inOrder();
-        System.out.println("---------");
-        bst.postOrder();
-        System.out.println("---------");
-        bst.LevelOrder();
-        System.out.println("---------");
-        System.out.println(bst.removeMin());
-        System.out.println("---------");
-        System.out.println(bst.removeMax());
-        System.out.println("---------");
+        bst.preOrder();
     }
 }
