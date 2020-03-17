@@ -2,6 +2,12 @@ package com;
 
 import java.util.ArrayList;
 
+/**
+ * BstSet: add/remove/contains O(h) h：树的高度，极端情况为n;
+ * BST完全平衡时:
+ *  2^h - 1 = n -> h = log2 (n + 1) -> O(log2 n) -> O(log n)
+ * LinkedListSet：add/remove/contains O(n) n：节点数量
+ */
 public class SetTest {
     private static double testSet(Set<String> set, String filename) {
         long startTime = System.nanoTime();
