@@ -1,14 +1,12 @@
 package com;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 最大堆的原理 https://www.yuque.com/shenwl/kb/tgt9p8
  */
 public class MaxHeap<T extends Comparable<T>> {
-    private class Node {
-    }
-
     private ArrayList<T> data;
 
     public MaxHeap(int capacity) {
@@ -17,6 +15,24 @@ public class MaxHeap<T extends Comparable<T>> {
 
     public MaxHeap() {
         this.data = new ArrayList<>();
+    }
+
+    public MaxHeap(T[] arr) {
+        this.data = new ArrayList<>(Arrays.asList(arr));
+        heapify(arr);
+    }
+
+    /**
+     * 将任意数组整理成堆的形状
+     * 实现：直接把当前数组看作完成二叉树，从最后一个非叶子节点开始计算，从后往前不断sift down
+     * 如何定位最后一个非叶子节点的索引：拿到最后一个节点的索引，然后计算它的父节点。复杂度：O(n)
+     * 如果将n个元素逐个插入到一个空堆中，复杂度是O(n log n)
+     */
+    public void heapify(T[] arr) {
+        int lastLeafNodeIndex = arr.length - 1;
+        for (int i = parent(lastLeafNodeIndex); i >= 0; i--) {
+            siftDown(i);
+        }
     }
 
     // 交换data中元素的位置
@@ -103,6 +119,18 @@ public class MaxHeap<T extends Comparable<T>> {
             throw new IllegalArgumentException("Can not findMax in empty heap!");
         }
         return data.get(0);
+    }
+
+    /**
+     * 取出最大元素后，放入一个新的元素
+     * 实现1：先extractMax再add，两次O(log n)操作
+     * 实现2：直接将栈顶元素替换以后sift Down，一次O(log n)操作
+     */
+    public T replace(T e) {
+        T ret = findMax();
+        data.set(0, e);
+        siftDown(0);
+        return ret;
     }
 
     public int size() {
